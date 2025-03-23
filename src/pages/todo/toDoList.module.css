@@ -1,0 +1,37 @@
+@import '../../App.css';
+
+.container{
+   max-width: 700px;
+   width: 80vw;
+   margin: 0 auto;
+   padding: 20px;
+   border: 2px solid var(--color-ui);
+   border-radius: 10px;
+   background-color: var(--color-primary);
+}
+.title{
+   margin-bottom: 30px;
+}
+.flex{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap:10px;
+}
+.complited{
+text-decoration:line-through;
+}
+.text{
+   width: 100%
+}
+
+.taskBox{
+   margin-top: 20px;
+}
+.li{
+   list-style: none;
+   font-size: 18px;
+   padding: 5px;
+   margin: 10px 0;
+   border-bottom: 1px solid var(--color-ui);
+}

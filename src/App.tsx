@@ -1,14 +1,16 @@
 
 import './App.css'
 import { Counter } from './pages/counter/Counter'
+import { ToDoList } from './pages/todo/ToDoList'
 
 function App() {
  
 
   return (
     <>
-      <h1>React</h1>
-      <Counter/>
+      
+      {/* <Counter/> */}
+      <ToDoList/>
     </>
   )
 }
