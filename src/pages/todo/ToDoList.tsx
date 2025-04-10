@@ -69,7 +69,7 @@ export const ToDoList = ()=>{
          { tasks.length>0 ?
           tasks.map(task => (
            <li key={task.id}  className={style.flex+ ' ' +  style.li} >
-             <p onClick={()=>hendleTask(task.id)} className={task.complitly?style.complited + ' ' + style.text  : style.text}> {task.task}</p> 
+             <p onClick={()=>hendleTask(task.id)} className={task.complitly?`${style.complited} ${style.text}`  : style.text}> {task.task}</p> 
              <Button onClick={()=>removeTask(task.id)} text="X"/>
            </li> 
          ))
