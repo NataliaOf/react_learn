@@ -4,10 +4,14 @@
    max-width: 700px;
    width: 80vw;
    margin: 0 auto;
+   margin-bottom: 20px;
    padding: 20px;
    border: 2px solid var(--color-ui);
    border-radius: 10px;
    background-color: var(--color-primary);
+}
+.notVisibel{
+   display: none;
 }
 .title{
    margin-bottom: 30px;
@@ -23,6 +27,9 @@ text-decoration:line-through;
 }
 .text{
    width: 100%;
+}
+.textRed{
+   color: var(--color-error);
 }
 
 .taskBox{

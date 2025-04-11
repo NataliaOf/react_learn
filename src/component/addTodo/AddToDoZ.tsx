@@ -12,6 +12,7 @@ const hendleInput = (e:React.ChangeEvent<HTMLInputElement>)=>{
 }
 
 const hendelAddTack = ()=>{
+   if(!value)return
    addTask(value)
    setValue('')
 }

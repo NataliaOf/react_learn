@@ -4,6 +4,7 @@
    --color-ui: #52796F;
    --color-title: #354F52;
    --color-text: #2F3E46;
+   --color-error:#913434;
  }
 
  *, *::after, *::before{

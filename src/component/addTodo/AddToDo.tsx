@@ -12,11 +12,18 @@ export const AddToDo = ()=>{
    const hendleInput :React.ChangeEventHandler<HTMLInputElement> = (e:React.ChangeEvent<HTMLInputElement>)=>{
       setValue(e.target.value)
    }
+
+   const context = useContext(ToDoContext);
+if (!context) {
+    return <p>Ошибка: Контекст не найден</p>;
+}
+const { dispatch } = context;
    
-   const {dispatch}= useContext(ToDoContext);
+ 
    
     const addTask = ()=>{
       setValue('');
+      if(!value)return;
     dispatch({
       type: 'ADD_TODO',
       payload:{

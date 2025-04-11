@@ -1,5 +1,5 @@
 // import { useState} from "react"
-import { useReducer, createContext } from 'react';
+import {useEffect, useReducer, createContext } from 'react';
 
 
 
@@ -8,7 +8,7 @@ import { AddToDo } from '../../component/addTodo/AddToDo';
 import { ToDoListBox } from '../../component/todoListBox/ToDoListBox';
 
 
-type taskType ={
+export type taskType ={
    id: string,
    task: string,
    complited: boolean
@@ -22,10 +22,22 @@ type taskType ={
    dispatch: React.Dispatch<TodoAction>;
  }
  
- 
-const initialState:TodoState = {
-   todos:[]
-}
+ const loadFromLocalStorage = (): taskType[] => {
+   const data = localStorage.getItem("todos");
+   try{
+
+      return data ? JSON.parse(data) : []   
+   }catch{
+      return []
+   }
+};
+
+const initialState: TodoState = {
+   todos: loadFromLocalStorage(),
+};
+// const initialState:TodoState = {
+   // todos:[]
+// }
 
 type TodoAction =
   | { type: 'ADD_TODO'; payload: taskType }
@@ -56,6 +68,11 @@ function reducer(state:TodoState, action:TodoAction):TodoState {
  }
    
  const [state, dispatch]= useReducer(reducer,initialState)
+
+
+useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(state.todos));
+}, [state.todos]);
    
    
     return(

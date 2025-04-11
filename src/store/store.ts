@@ -1,5 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { create } from 'zustand';
+import {persist} from 'zustand/middleware';
+
+
 export type taskType ={
    id: string,
    task: string,
@@ -13,7 +16,7 @@ export type taskType ={
    removeTodo: (todoId:string)=> void
   }
 
-export const useTodos = create<stateType>((set, get)=>({
+export const useTodos = create( persist<stateType>((set, get)=>({
  todos: [],
  addTodo: (title)=> set((state: stateType)=>{
   const newTodo = {id :uuidv4(),task:title,complited:false} 
@@ -28,4 +31,9 @@ export const useTodos = create<stateType>((set, get)=>({
    todos: get().todos.filter((todo)=> todoId !== todo.id)
   })
 
-})) 
+}),
+{
+   name: "todo-storage"
+}
+)
+) 
