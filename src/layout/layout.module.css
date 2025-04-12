@@ -1,0 +1,25 @@
+@import '../css/App.css';
+
+
+.container{
+  max-width: 80%;
+  margin: 0 auto;
+}
+.layout{
+   
+   min-height: 100%;
+  display: grid;
+  gap: 30px;
+  grid-template-columns:  200px 1fr 1fr;
+  grid-template-rows: auto 1fr 200px;
+  grid-template-areas: "header  header  header"
+                        "aside  main  main"
+		                  "footer  footer footer "  
+}
+
+
+.main{
+   grid-area: main;
+   padding:20px;
+}
+

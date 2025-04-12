@@ -13,7 +13,8 @@ export type taskType ={
    todos: taskType[],
    addTodo: (title:string)=>void,
    toggleTodo: (todoId:string)=> void,
-   removeTodo: (todoId:string)=> void
+   removeTodo: (todoId:string)=> void,
+   removeLocalStorege : ()=>void
   }
 
 export const useTodos = create( persist<stateType>((set, get)=>({
@@ -29,7 +30,12 @@ export const useTodos = create( persist<stateType>((set, get)=>({
   }),
   removeTodo: (todoId)=> set({
    todos: get().todos.filter((todo)=> todoId !== todo.id)
-  })
+  }),
+  removeLocalStorege: ()=>set(
+   // {localStorage.removeItem("todo-storage"),
+  { todos: get().todos = []},
+  
+  )
 
 }),
 {

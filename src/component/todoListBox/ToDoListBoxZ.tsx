@@ -2,16 +2,21 @@
 import style from '../../pages/todo/toDoList.module.css';
 import { useTodos } from '../../store/store';
 import { taskType } from '../../store/store';
+
 import { Button } from '../button/Button';
 
+
+ 
 type PropsType ={
-   title: string
+   title: string,
+   
 }
 
 
 export const ToDoListBozZ = ({title}:PropsType)=>{
 
    const todos = useTodos((state) => state.todos)
+   
    let todos2 = []
     if(title==='Complited'){
     todos2= todos.filter(todo =>todo.complited===true)
@@ -19,7 +24,7 @@ export const ToDoListBozZ = ({title}:PropsType)=>{
     todos2= todos.filter(todo =>todo.complited===false)
     }
 
-   const toggleTodo = useTodos((state) => state.toggleTodo)
+    const toggleTodo = useTodos((state) => state.toggleTodo)
    const removeTodo = useTodos((state)=> state.removeTodo)
    const hendlerToggleTodo = (id:string)=>{
       toggleTodo(id)

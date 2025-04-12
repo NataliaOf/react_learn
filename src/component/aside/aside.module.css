@@ -1,0 +1,6 @@
+.aside{
+   grid-area: aside;
+   border: 2px solid var(--color-ui);
+   border-radius: 10px;
+   padding:20px;
+}

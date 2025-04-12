@@ -2,7 +2,6 @@
 import {useEffect, useReducer, createContext } from 'react';
 
 
-
 import style from '../todo/toDoList.module.css';
 import { AddToDo } from '../../component/addTodo/AddToDo';
 import { ToDoListBox } from '../../component/todoListBox/ToDoListBox';
@@ -66,18 +65,21 @@ function reducer(state:TodoState, action:TodoAction):TodoState {
          return state;
    }
  }
+
+
    
  const [state, dispatch]= useReducer(reducer,initialState)
 
 
 useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(state.todos));
+    return ()=> localStorage.removeItem("todos");
 }, [state.todos]);
    
    
     return(
       <div className={style.container}>
-      <h2 className={style.title}>Todo list with hook</h2>
+      <h2 className={style.title}>Todo list with hook </h2>
 
       <ToDoContext.Provider value={{state, dispatch}}>
 

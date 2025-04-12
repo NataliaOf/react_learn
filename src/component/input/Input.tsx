@@ -1,16 +1,21 @@
 import style from './input.module.css'
+import { forwardRef } from 'react'
+
+
+
 
 type inputProps = {
    type : string, 
    value : string, 
-   onChange : React.ChangeEventHandler , 
-   onKeyDown ?:  React.KeyboardEventHandler ,
+   onChange : React.ChangeEventHandler<HTMLInputElement> , 
+   onKeyDown ?:  React.KeyboardEventHandler<HTMLInputElement> ,
    placeholder : string, 
    disabled ? : boolean, 
-   className ? : string 
+   className ? : string,
+
 }
 
-export const Input = ({type, value, onChange, onKeyDown, placeholder, disabled }:inputProps)=>{
+export const Input = forwardRef<HTMLInputElement,inputProps>(({type, value, onChange, onKeyDown, placeholder, disabled,className }, ref)=>{
 
    return(
       <input type={type} 
@@ -19,8 +24,8 @@ export const Input = ({type, value, onChange, onKeyDown, placeholder, disabled }
         onKeyDown={ onKeyDown}
         placeholder={placeholder}
         disabled={disabled}
-        className={style.input}
-
+        className={className ||style.input}
+         ref={ref}
       />
    )
-}
+})

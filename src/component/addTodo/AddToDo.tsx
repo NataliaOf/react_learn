@@ -1,4 +1,4 @@
-import{ useState} from 'react';
+import{ useState, useRef,useEffect} from 'react';
 import { useContext } from 'react';
 import { ToDoContext } from '../../pages/todo2/ToDoListHook'
 import { v4 as uuidv4 } from 'uuid';
@@ -33,6 +33,10 @@ const { dispatch } = context;
       }
     })
     }
+    const inputRef = useRef<HTMLInputElement>(null)
+    useEffect(()=>{
+    inputRef.current?.focus()
+   },[])
 
    
       function handleKeyDown(e:React.KeyboardEvent) {
@@ -47,7 +51,8 @@ const { dispatch } = context;
       <Input type="text" placeholder="Add task"
        value={value} 
        onChange={(e:React.ChangeEvent<HTMLInputElement>)=>hendleInput(e)}
-       onKeyDown={e=>handleKeyDown(e)}  />
+       onKeyDown={e=>handleKeyDown(e)} 
+       ref={inputRef} />
       <Button onClick={()=>addTask()} text="Add"/>
    </div>
    )

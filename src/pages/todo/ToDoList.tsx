@@ -1,4 +1,4 @@
-import { useState} from "react"
+import { useState, useRef, useEffect} from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 import style from './toDoList.module.css';
@@ -53,6 +53,12 @@ export const ToDoList = ()=>{
          setTasks(newTasks);
       
       }
+
+      const inputRef = useRef<HTMLInputElement>(null)
+      useEffect(()=>{
+      inputRef.current?.focus()
+     },[])
+
  
   
   
@@ -61,7 +67,7 @@ export const ToDoList = ()=>{
       <div className={style.container}>
       <h2 className={style.title}>Todo list</h2>
       <div className={style.flex}>
-         <Input type="text" placeholder="Add task" value={value} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>hendleInput(e)}/>
+         <Input type="text" ref={inputRef} placeholder="Add task" value={value} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>hendleInput(e)}/>
          <Button onClick={()=>addTask(value)} text="Add"/>
       </div>
       <div className={style.taskBox}>

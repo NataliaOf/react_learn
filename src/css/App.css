@@ -1,3 +1,5 @@
+@import './normalize.css';
+
 :root {
    --color-light : #CAD2C5;
    --color-primary: #84A98C;
@@ -19,12 +21,20 @@ body{
    font-size: 16px;
 }
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+ height: 100vh;
+  
   padding: 2rem;
-  /* text-align: center; */
 }
+
+
 
 h1,h2,h3{
    color: var(--color-title);
+}
+
+.flax{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap:10px
 }

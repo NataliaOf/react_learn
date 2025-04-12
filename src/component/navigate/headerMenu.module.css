@@ -1,0 +1,18 @@
+@import '../../layout/layout.module.css';
+@import '../../css/App.css';
+
+.menu{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap:10px
+}
+
+.link{
+   font-size: 20px;
+   color: var(--color-title);
+   transition: all 0.5s ease-in;
+}
+.link:hover{
+   color: var(--color-ui);
+}

@@ -1,0 +1,9 @@
+
+@import '../../layout/layout.module.css';
+
+.header{
+   grid-area:header;
+   border: 2px solid var(--color-ui);
+   border-radius: 10px;
+   padding:20px;
+}
