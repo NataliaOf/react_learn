@@ -1,17 +1,17 @@
 
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import style from './headerMenu.module.css';
 export const HeaderMenu = ()=>{
 
    return(
       <nav className={style.menu}>
-      <Link className={style.link} to = "/">Home</Link>
+      <NavLink style={({isActive})=>({color: isActive? 'var(--color-error)': 'var(--color-title)'})} className={style.link} to = "/">Home</NavLink>
     
-       <Link className={style.link} to = "/todolist">ToDoList</Link>
-       <Link className={style.link} to = "/todolisthook">ToDoListHook</Link>
-       <Link className={style.link} to = "/todolistzustand">ToDoListZustand</Link>
+       <NavLink style={({isActive})=>({color: isActive? 'var(--color-error)': 'var(--color-title)'})} className={style.link} to = "/todo">ToDo</NavLink>
+       {/* <NavLink style={({isActive})=>({color: isActive? 'var(--color-error)': 'var(--color-title)'})} className={style.link} to = "/todolisthook">ToDoListHook</NavLink> */}
+       {/* <NavLink style={({isActive})=>({color: isActive? 'var(--color-error)': 'var(--color-title)'})} className={style.link} to = "/todolistzustand">ToDoListZustand</NavLink> */}
       </nav>
    )
 }
