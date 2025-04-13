@@ -1,27 +1,34 @@
-import { Button } from '../button/Button';
-import style from './dialog.module.css';
+import { createPortal } from "react-dom";
+import { ReactNode } from "react";
+// import ReactDOM from "react-dom";
+import styles from "./dialog.module.css"; 
+import { Button } from "../button/Button";
 
-interface ModalProps {
-   isOpen: boolean;
-   onClose: () => void;
- }
- 
-
-
-
-export function Dialog({ isOpen, onClose }:ModalProps) {
-  if (!isOpen) return null;
-
-  return (
-    <div className={style.overlay}>
-      <div className={style.modal}>
-         <h2>Title</h2>
-        <p className={style.text}>Це модальне вікно у React!</p>
-        <Button text="Close" onClick={onClose}/>
-       
-      </div>
-    </div>
-  );
+type dialogProps = {
+   isOpen: boolean, 
+   onClose:()=>void,
+    children:ReactNode
 }
 
+export const Dialog = ({ isOpen, onClose, children }:dialogProps) => {
+  if (!isOpen) return null;
+  const modalRoot = document.getElementById("modal-root");
+
+  if (!modalRoot) {
+    console.error("Елемент #modal-root не знайдено!");
+    return null;
+  }
+//   const openPortal = isOpen?  `${styles.open} ${styles.overlay}` : styles.overlay
+const openPortal = isOpen && styles.open ? `${styles.open} ${styles.overlay}` : styles.overlay;  
+return createPortal(
+    <div className={openPortal} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        {children}
+        <Button text="Close" onClick={onClose} />
+      
+      </div>
+    </div>,
+     modalRoot
+  );
+};
 
